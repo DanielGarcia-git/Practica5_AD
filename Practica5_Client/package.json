@@ -1,9 +1,7 @@
 {
-  "name": "angular-seed",
+  "name": "practica5-client",
   "private": true,
-  "version": "0.0.0",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "version": "1.0.0",
   "license": "MIT",
   "dependencies": {
     "angular": "^1.7.5",
@@ -16,10 +14,6 @@
     "cpx": "^1.5.0",
     "http-server": "^14.1.1",
     "jasmine-core": "^3.3.0",
-    "karma": "^6.4.1",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-firefox-launcher": "^1.1.0",
-    "karma-jasmine": "^1.1.2",
     "nodemon": "^2.0.20",
     "protractor": "^5.4.1"
   },

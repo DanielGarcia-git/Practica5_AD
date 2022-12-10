@@ -1,0 +1,19 @@
+<div class="login-page">
+    <div class="form">
+        <h1>Practica 5</h1>
+        <form class="sign-in" ng-show="state.sigin">
+            <input name="email" type="email" placeholder="Correo electronico" required/>
+            <input name="name" type="text" placeholder="Nombre" required/>
+            <input name="password" type="password" placeholder="Introduce la nueva contraseña" required/>
+            <input name="passwordR" type="password" placeholder="Repita la contraseña" required/>
+            <input type="submit" value="Crear"/>
+            <p class="message">¿Ya estas registrado? <a ng-click="ShowLogIn()"> Inicia sesion</a></p>
+        </form>
+        <form class="log-in" ng-show="state.login">
+            <input name="email" type="email" placeholder="Correo electronico" required/>
+            <input name="password" type="password" placeholder="Contraseña" required/>
+            <input type="submit" value="Iniciar sesion"/>
+            <p class="message">¿No estas registrado? <a ng-click="ShowLogIn()"> Crear una cuenta</a></p>
+        </form>
+    </div>
+</div>
