@@ -4,7 +4,7 @@ var module = angular.module('practica5Client.login', ['ngRoute']);
 
 module.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/login', {
-    templateUrl: 'Login/Login.html',
+    templateUrl: 'Views/Login/Login.html',
     controller: 'LoginCtrl'
   });
 }])

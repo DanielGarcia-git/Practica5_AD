@@ -4,7 +4,8 @@
 angular.module('practica5Client', [
   'ngRoute',
   'practica5Client.login',
-  'practica5Client.registrarImagen'
+  'practica5Client.registrarImagen',
+  'practica5Client.buscarImagen'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');

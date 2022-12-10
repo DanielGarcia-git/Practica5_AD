@@ -4,7 +4,7 @@ angular.module('practica5Client.registrarImagen', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/RegistrarImagen', {
-    templateUrl: 'RegistrarImagen/RegistrarImagen.html',
+    templateUrl: 'Views/RegistrarImagen/RegistrarImagen.html',
     controller: 'RegistrarImagenCtrl'
   });
 }])
