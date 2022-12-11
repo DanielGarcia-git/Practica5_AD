@@ -9,11 +9,22 @@ module.config(['$routeProvider', function($routeProvider) {
   });
 }])
 
-module.controller('LoginCtrl', function($scope) {
+module.controller('LoginCtrl', function($scope, $http, $q) {
 
   inicializeScopeVar($scope);
   inicializeScopeFunctions($scope);
 
+  $scope.login = function() {
+    $http.post(REST_URL.LOGIN, {username: $scope.user.email, password: $scope.user.password})
+    $q.resolve(function(data) {
+      console.log(data);
+    })
+  };
+
+  $scope.sigin = function() {
+    var res = $http.post(REST_URL.REGISTER, {username: $scope.user.email, password: $scope.user.password, name: $scope.user.name});
+
+  };
   
 });
 
