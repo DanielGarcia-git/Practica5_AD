@@ -1,14 +1,16 @@
 'use strict';
 
 // Declare app level module which depends on views, and core components
-angular.module('practica5Client', [
+var myApp = angular.module('practica5Client', [
+  'ngResource',
   'ngRoute',
   'practica5Client.login',
   'practica5Client.registrarImagen',
   'practica5Client.buscarImagen'
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+]);
 
+myApp.config(['$locationProvider', '$routeProvider', '$resourceProvider', function($locationProvider, $routeProvider, $resourceProvider) {
+  $locationProvider.hashPrefix('!');
+  $resourceProvider.defaults.stripTrailingSlashes = false;
   $routeProvider.otherwise({redirectTo: '/login'});
 }]);
