@@ -10,5 +10,11 @@ module.config(['$routeProvider', function($routeProvider) {
 }]);
 
 module.controller('ErrorCtrl', ['$scope', '$window', '$cookies', function($scope, $window, $cookies) {
-
+  var user = $cookies.getObject('user');
+  if (user != null) {
+    $scope.user = user;
+  }
+  else {
+    $window.location.href = "#!/login";
+  }
 }]);

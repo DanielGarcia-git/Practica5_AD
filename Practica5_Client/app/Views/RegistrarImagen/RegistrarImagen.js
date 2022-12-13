@@ -1,14 +1,20 @@
 'use strict';
 
-angular.module('practica5Client.registrarImagen', ['ngRoute'])
+var module = angular.module('practica5Client.registrarImagen', ['ngRoute', 'ngCookies']);
 
-.config(['$routeProvider', function($routeProvider) {
+module.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/registrarimagen', {
     templateUrl: 'Views/RegistrarImagen/RegistrarImagen.html',
     controller: 'RegistrarImagenCtrl'
   });
-}])
+}]);
 
-.controller('RegistrarImagenCtrl', [function() {
-
+module.controller('RegistrarImagenCtrl', ['$cookies', function($cookies) {
+  var user = $cookies.getObject('user');
+  if (user != null) {
+    $scope.user = user;
+  }
+  else {
+    $window.location.href = "#!/login";
+  }
 }]);

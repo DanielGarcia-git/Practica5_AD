@@ -1,14 +1,20 @@
 'use strict';
 
-angular.module('practica5Client.buscarImagen', ['ngRoute'])
+var module = angular.module('practica5Client.buscarImagen', ['ngRoute', 'ngCookies']);
 
-.config(['$routeProvider', function($routeProvider) {
+module.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/buscarimagen', {
     templateUrl: 'Views/BuscarImagen/BuscarImagen.html',
     controller: 'BuscarImagenCtrl'
   });
-}])
+}]);
 
-.controller('BuscarImagenCtrl', [function() {
-
+module.controller('BuscarImagenCtrl', ['$cookies', function($cookies) {
+  var user = $cookies.getObject('user');
+  if (user != null) {
+    $scope.user = user;
+  }
+  else {
+    $window.location.href = "#!/login";
+  }
 }]);
