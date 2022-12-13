@@ -9,7 +9,7 @@ module.config(['$routeProvider', function($routeProvider) {
   });
 }]);
 
-module.controller('BuscarImagenCtrl', ['$cookies', function($cookies) {
+module.controller('BuscarImagenCtrl', ['$scope', '$window', '$cookies', function($scope, $window, $cookies) {
   var user = $cookies.getObject('user');
   if (user != null) {
     $scope.user = user;
