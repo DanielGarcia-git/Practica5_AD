@@ -4,7 +4,9 @@
 var myApp = angular.module('practica5Client', [
   'ngResource',
   'ngRoute',
+  'ngCookies',
   'practica5Client.login',
+  'practica5Client.home',
   'practica5Client.registrarImagen',
   'practica5Client.buscarImagen'
 ]);

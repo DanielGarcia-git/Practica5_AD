@@ -1,6 +1,6 @@
 'use strict';
 
-var module = angular.module('practica5Client.login', ['ngRoute', 'ngResource']);
+var module = angular.module('practica5Client.login', ['ngRoute', 'ngResource', 'ngCookies']);
 
 module.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/login', {
@@ -10,29 +10,47 @@ module.config(['$routeProvider', function($routeProvider) {
 }]);
 
 module.factory('User', ['$resource', function($resource) {
-  return $resource(REST_URL.BASE, {}, {
+  return $resource(REST_URL.BASE, null, {
     login: {
-      method: 'GET',
+      method: 'POST',
       url: REST_URL.LOGIN,
-      params: {'username': '@username', 'password': '@password'}
+      headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+      transformRequest: function (data, headersGetter) {
+        var str = [];
+        for (var d in data)
+            str.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
+        return str.join("&");
+      }
     },
-    save: {
+    register: {
       method: 'POST',
       url: REST_URL.REGISTER,
-      headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+      headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+      transformRequest: function (data, headersGetter) {
+        var str = [];
+        for (var d in data)
+            str.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
+        return str.join("&");
+      }
     }
   });
 }]);
 
-module.controller('LoginCtrl', ['$scope', 'User', function($scope, User) {
+module.controller('LoginCtrl', ['$scope', '$window', '$cookies', 'User', function($scope, $window, $cookies, User) {
 
   inicializeScopeVar($scope);
   inicializeScopeFunctions($scope);
 
   $scope.login = function() {
     var password = encryptPassword($scope.user.password);
-    User.login({'username': $scope.user.email, 'password': password}).$promise.then(function(response) {
-      console.log(response);
+    var user = new User();
+    user.username = $scope.user.email;
+    user.password = password;
+    user.$login().then(function(response) {
+      if (response.success) {
+        $cookies.put('user', response.data);
+        $window.location.href = "#!/home";
+      }
     }, function(error) {
       console.log(error);
     });
@@ -41,12 +59,14 @@ module.controller('LoginCtrl', ['$scope', 'User', function($scope, User) {
   $scope.sigin = function() {
     var password = encryptPassword($scope.user.password);
     var user = new User();
-    user.$save({username: $scope.user.email, password: password, name: $scope.user.name}).then(function(response) {
+    user.username = $scope.user.email;
+    user.password = password;
+    user.name = $scope.user.name
+    user.$register().then(function(response) {
       console.log(response);
     }, function(error) {
       console.log(error);
     });
-
   };
   
 }]);
