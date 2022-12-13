@@ -10,6 +10,7 @@ module.config(['$routeProvider', function($routeProvider) {
 }]);
 
 module.controller('HomeCtrl', ['$scope', '$window', '$cookies', function($scope, $window, $cookies) {
+    
   var user = $cookies.getObject('user');
   if (user != null) {
     $scope.user = user;
@@ -17,4 +18,5 @@ module.controller('HomeCtrl', ['$scope', '$window', '$cookies', function($scope,
   else {
     $window.location.href = "#!/login";
   }
+
 }]);

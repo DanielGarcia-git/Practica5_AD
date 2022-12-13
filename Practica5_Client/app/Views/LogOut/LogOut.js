@@ -10,7 +10,7 @@ module.config(['$routeProvider', function($routeProvider) {
 }]);
 
 module.controller('LogOutCtrl', ['$scope', '$window', '$cookies', function($scope, $window, $cookies) {
-  alert("Holaaa");
+    
   $cookies.put('user', null);
   $window.location.href = "#!/login";
 }]);

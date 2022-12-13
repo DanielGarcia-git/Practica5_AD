@@ -10,6 +10,8 @@ module.config(['$routeProvider', function($routeProvider) {
 }]);
 
 module.controller('RegistrarImagenCtrl', ['$scope', '$window', '$cookies', function($scope, $window, $cookies) {
+  
+
   var user = $cookies.getObject('user');
   if (user != null) {
     $scope.user = user;

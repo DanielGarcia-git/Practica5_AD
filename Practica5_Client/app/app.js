@@ -1,6 +1,5 @@
 'use strict';
 
-// Declare app level module which depends on views, and core components
 var myApp = angular.module('practica5Client', [
   'ngResource',
   'ngRoute',
@@ -9,6 +8,7 @@ var myApp = angular.module('practica5Client', [
   'practica5Client.logout',
   'practica5Client.home',
   'practica5Client.registrarImagen',
+  'practica5Client.listarImagenes',
   'practica5Client.buscarImagen',
   'practica5Client.error'
 ]);

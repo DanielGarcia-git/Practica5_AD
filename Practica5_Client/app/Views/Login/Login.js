@@ -38,8 +38,20 @@ module.factory('User', ['$resource', function($resource) {
 
 module.controller('LoginCtrl', ['$scope', '$window', '$cookies', 'User', function($scope, $window, $cookies, User) {
 
-  inicializeScopeVar($scope);
-  inicializeScopeFunctions($scope);
+  var user = $cookies.getObject('user');
+  if (user != null) {
+    $scope.user = user;
+    //$window.location.href = "#!/home";
+  }
+
+  $scope.state = {};
+  $scope.state.login = true;
+  $scope.state.sigin = false;
+
+  $scope.ShowLogIn = function() {
+    $scope.state.login = !$scope.state.login;
+    $scope.state.sigin = !$scope.state.login;
+  };
 
   $scope.login = function() {
     var password = encryptPassword($scope.user.password);
@@ -73,21 +85,6 @@ module.controller('LoginCtrl', ['$scope', '$window', '$cookies', 'User', functio
   };
   
 }]);
-
-function inicializeScopeVar($scope) {
-  $scope.state = {};
-  $scope.state.login = true;
-  $scope.state.sigin = false;
-  $scope.state.actualPage = "login";
-}
-
-function inicializeScopeFunctions($scope) {
-
-  $scope.ShowLogIn = function() {
-    $scope.state.login = !$scope.state.login;
-    $scope.state.sigin = !$scope.state.login;
-  };
-}
 
 function encryptPassword(password) {
   return CryptoJS.MD5(password);
