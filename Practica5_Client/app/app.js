@@ -6,9 +6,11 @@ var myApp = angular.module('practica5Client', [
   'ngRoute',
   'ngCookies',
   'practica5Client.login',
+  'practica5Client.logout',
   'practica5Client.home',
   'practica5Client.registrarImagen',
-  'practica5Client.buscarImagen'
+  'practica5Client.buscarImagen',
+  'practica5Client.error'
 ]);
 
 myApp.config(['$locationProvider', '$routeProvider', '$resourceProvider', function($locationProvider, $routeProvider, $resourceProvider) {

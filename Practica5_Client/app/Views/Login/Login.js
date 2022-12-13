@@ -51,6 +51,9 @@ module.controller('LoginCtrl', ['$scope', '$window', '$cookies', 'User', functio
         $cookies.put('user', response.data);
         $window.location.href = "#!/home";
       }
+      else {
+        
+      }
     }, function(error) {
       console.log(error);
     });
