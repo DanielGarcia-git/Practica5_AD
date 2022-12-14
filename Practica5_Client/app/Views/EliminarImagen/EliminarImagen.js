@@ -23,7 +23,7 @@ module.controller('EliminarImagenCtrl', ['$scope', '$window', '$cookies', 'Image
     var image = new Image();
     image.id = $scope.image.IdImage;
     image.$delete().then(function(response) {
-      if (response.success) $window.location.href = "#!/listarimagenes";
+      if (response.success) $window.location.href = $cookies.previousPage;
       else {
         
       }
@@ -33,6 +33,6 @@ module.controller('EliminarImagenCtrl', ['$scope', '$window', '$cookies', 'Image
   };
 
   $scope.cancel = function() {
-    $window.location.href = "#!/listarimagenes"
+    $window.location.href = $cookies.previousPage;
   };
 }]);

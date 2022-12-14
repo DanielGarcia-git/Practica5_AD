@@ -31,7 +31,7 @@ module.controller('ModificarImagenCtrl', ['$scope', '$window', '$cookies', 'Imag
       image.creator = $scope.image.Creator;
       image.capture = $scope.image.CreationDate;
       image.$modify().then(function(response) {
-        if (response.success) $window.location.href = "#!/listarimagenes";
+        if (response.success) $window.location.href = $cookies.previousPage;
         else {
 
         }
