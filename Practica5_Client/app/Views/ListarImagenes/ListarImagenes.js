@@ -26,14 +26,20 @@ module.controller('ListarImagenesCtrl', ['$scope', '$window', '$cookies', 'Image
 
   $scope.modImage = function(image) {
     $cookies.actualImage = image;
-    $window.location.href = "#!/login"
+    $window.location.href = "#!/modificarimagen"
   };
 
   $scope.delImage = function(image) {
-
+    $cookies.actualImage = image;
+    $window.location.href = "#!/eliminarimagen"
   };
 
   $scope.downloadImage = function(image) {
-
+    console.log(image);
+    var a = document.createElement('a');
+    document.body.appendChild(a);
+    a.href = REST_URL.DOWNLOAD_IMAGE + '?id=' + image.IdImage;
+    a.download = image.FileName;
+    a.click();
   };
 }]);

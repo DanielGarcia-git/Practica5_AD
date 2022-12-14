@@ -26,7 +26,7 @@ module.factory('Image', ['$resource', function($resource) {
     },
     list: {
       method: 'GET',
-      url: REST_URL.LIST_IMAGE,
+      url: REST_URL.LIST_IMAGE
     }
   });
 }]);
