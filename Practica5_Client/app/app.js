@@ -10,7 +10,9 @@ var myApp = angular.module('practica5Client', [
   'practica5Client.registrarImagen',
   'practica5Client.listarImagenes',
   'practica5Client.buscarImagen',
-  'practica5Client.error'
+  'practica5Client.error',
+  'practica5Client.modificarImagen',
+  'practica5Client.eliminarImagen'
 ]);
 
 myApp.config(['$locationProvider', '$routeProvider', '$resourceProvider', function($locationProvider, $routeProvider, $resourceProvider) {

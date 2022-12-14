@@ -4,5 +4,6 @@ const REST_URL = {
     REGISTER: 'http://localhost:8080/Practica4_ServiceREST/api/users/register/',
     REGISTER_IMAGE: 'http://localhost:8080/Practica4_ServiceREST/api/images/register/',
     LIST_IMAGE: 'http://localhost:8080/Practica4_ServiceREST/api/images/list',
-    DOWNLOAD_IMAGE: 'http://localhost:8080/Practica4_ServiceREST/api/images/download'
+    DOWNLOAD_IMAGE: 'http://localhost:8080/Practica4_ServiceREST/api/images/download',
+    DELETE_IMAGE: 'http://localhost:8080/Practica4_ServiceREST/api/images/delete'
 }

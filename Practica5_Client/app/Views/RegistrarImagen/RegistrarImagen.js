@@ -27,6 +27,17 @@ module.factory('Image', ['$resource', function($resource) {
     list: {
       method: 'GET',
       url: REST_URL.LIST_IMAGE
+    },
+    delete: {
+      method: 'POST',
+      url: REST_URL.DELETE_IMAGE,
+      headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+      transformRequest: function (data, headersGetter) {
+        var str = [];
+        for (var d in data)
+            str.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
+        return str.join("&");
+      }
     }
   });
 }]);
