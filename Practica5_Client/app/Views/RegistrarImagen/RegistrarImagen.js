@@ -1,6 +1,6 @@
 'use strict';
 
-var module = angular.module('practica5Client.registrarImagen', ['ngRoute', 'ngCookies']);
+var module = angular.module('practica5Client.registrarImagen', ['ngRoute', 'ngCookies', 'ngResource']);
 
 module.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/registrarimagen', {
@@ -23,6 +23,10 @@ module.factory('Image', ['$resource', function($resource) {
         }
         return formData;
       }
+    },
+    list: {
+      method: 'GET',
+      url: REST_URL.LIST_IMAGE,
     }
   });
 }]);
@@ -40,7 +44,7 @@ module.controller('RegistrarImagenCtrl', ['$scope', '$window', '$cookies', 'Imag
     Image.register($scope.image).$promise.then(function(response) {
       if (response.success) $window.location.href = "#!/home";
       else {
-        
+
       }
     }, function(error) {
       console.log(error);

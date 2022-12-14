@@ -1,0 +1,34 @@
+<div class="content-table">
+  <table class="table">
+    <tr>
+      <th>Titulo</th>
+      <th>Descripción</th>
+      <th>Palabras clave</th>
+      <th>Autor</th>
+      <th>Creador</th>
+      <th>Fecha de creación</th>
+      <th>Fecha de alta</th>
+      <th>Modificar</th>
+      <th>Eliminar</th>
+      <th>Visualizar</th>
+    </tr>
+    <tr ng-repeat="image in showImages">
+      <td ng-bind="image.Title"></td>
+      <td ng-bind="image.Description"></td>
+      <td ng-bind="image.Keywords"></td>
+      <td ng-bind="image.Author"></td>
+      <td ng-bind="image.Creator"></td>
+      <td ng-bind="image.CreationDate"></td>
+      <td ng-bind="image.RegisterDate"></td>
+      <td>
+        <button type="button" class="btn" ng-click="modImage(image)" ng-disabled="image.Creator != user.UserEmail">Modificar</button>
+      </td>
+      <td>
+        <button type="button" class="btn btnDel" ng-click="delImage(image)" ng-disabled="image.Creator != user.UserEmail">Eliminar</button>
+      </td>
+      <td>
+        <button type="button" class="btn" ng-click="downloadImage(image)">Descargar</button>
+      </td>
+    </tr>
+  </table>
+</div>

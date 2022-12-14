@@ -78,7 +78,10 @@ module.controller('LoginCtrl', ['$scope', '$window', '$cookies', 'User', functio
     user.password = password;
     user.name = $scope.user.name
     user.$register().then(function(response) {
-      console.log(response);
+      if (response.success) $window.location.href = "#!/login";
+      else {
+        
+      }
     }, function(error) {
       console.log(error);
     });
