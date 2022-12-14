@@ -18,6 +18,49 @@ h1 {
   text-align: center;
 }
 
+/* Busqueda */
+
+.wrapper-search {
+  position: relative;
+  z-index: 1;
+  background: #F5EFE6;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.wrapper-search input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #E8DFCA;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.wrapper-search input[type=submit] {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #7895B2;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.wrapper-search input[type=submit]:hover {
+  background: #AEBDCA;
+}
+
 /* Table */
 
 .table {

@@ -4,6 +4,7 @@ var myApp = angular.module('practica5Client', [
   'ngResource',
   'ngRoute',
   'ngCookies',
+  'ui.bootstrap',
   'practica5Client.login',
   'practica5Client.logout',
   'practica5Client.home',
