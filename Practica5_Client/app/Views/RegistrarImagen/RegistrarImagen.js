@@ -34,8 +34,20 @@ module.factory('Image', ['$resource', function($resource) {
       headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
       transformRequest: function (data, headersGetter) {
         var str = [];
-        for (var d in data)
-            str.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
+        for (var d in data) str.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
+        return str.join("&");
+      }
+    },
+    modify: {
+      method: 'POST',
+      url: REST_URL.MODIFY_IMAGE,
+      headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+      transformRequest: function (data, headersGetter) {
+        var str = [];
+        for (var d in data) {
+          if (data[d] instanceof Date) str.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d].toLocaleDateString()));
+          else str.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
+        }
         return str.join("&");
       }
     }
