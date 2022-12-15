@@ -2,7 +2,8 @@ class ManagerDB {
 
     _connection = null;
 
-    constructor() {
+    constructor() 
+    {
         var mysql = require('mysql');
         /* Setup connection */
         var connection = mysql.createConnection({
@@ -19,5 +20,17 @@ class ManagerDB {
                 this._connection = connection;
             }
         });
+
+        connection.query("SELECT * FROM users WHERE id_user=?", ["prueba@prueba.com"], function(error, results, fields) {
+            if (error) throw error;
+            if (results.length > 0) {
+                console.log(results);
+            }
+        });
+    }
+
+    get Connection()
+    {
+        return this._connection;
     }
 }

@@ -1,15 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/register', function(req, res, next) {
+router.post('/register', function(req, res, next) {
 
 });
 
-router.get('/modify', function(req, res, next) {
+router.post('/modify', function(req, res, next) {
 
 });
 
-router.get('/delete', function(req, res, next) {
+router.post('/delete', function(req, res, next) {
 
 });
 
