@@ -46,3 +46,5 @@ class User {
         this._Name = newName;
     }
 }
+
+module.exports = User;

@@ -1,9 +1,4 @@
-import "../../Models/User/User";
-import "../ManagerDB/ManagerDB";
-
 class ManagerUser {
-
-    _DB = null;
 
     constructor() 
     {
@@ -33,3 +28,5 @@ class ManagerUser {
 
     }
 }
+
+module.exports = ManagerUser;

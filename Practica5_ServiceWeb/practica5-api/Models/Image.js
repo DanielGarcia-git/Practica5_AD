@@ -124,5 +124,6 @@ class Image {
     {
         this._FileName = newFileName;
     }
-
 }
+
+module.exports = Image;
