@@ -18,8 +18,7 @@ module.controller('ListarImagenesCtrl', ['$scope', '$window', '$cookies', 'Image
   $scope.showImages = [];
 
   Image.list().$promise.then(function(response) {
-    console.log(JSON.parse(response.data));
-    $scope.showImages = JSON.parse(response.data);
+    $scope.showImages = response.data;
   }, function(error) {
     console.log(error);
   });
@@ -37,7 +36,6 @@ module.controller('ListarImagenesCtrl', ['$scope', '$window', '$cookies', 'Image
   };
 
   $scope.downloadImage = function(image) {
-    console.log(image);
     var a = document.createElement('a');
     document.body.appendChild(a);
     a.href = REST_URL.DOWNLOAD_IMAGE + '?id=' + image.IdImage;

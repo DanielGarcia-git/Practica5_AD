@@ -1,3 +1,18 @@
+
+function buildImage(IdImage,
+                    Title,
+                    Description,
+                    Keywords,
+                    Author,
+                    Creator,
+                    CreationDate,
+                    RegisterDate,
+                    FileName)  
+{
+  return {
+    
+  }
+}
 class Image {
 
     _IdImage = null;
