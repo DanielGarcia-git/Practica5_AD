@@ -12,11 +12,16 @@ module.config(['$routeProvider', function($routeProvider) {
 module.controller('ErrorCtrl', ['$scope', '$window', '$cookies', function($scope, $window, $cookies) {
     
   var user = $cookies.getObject('user');
-  if (user != null) {
-    $scope.user = user;
-  }
-  else {
-    $window.location.href = "#!/login";
-  }
+  if (user != null) $scope.user = user;
+  else $window.location.href = "#!/login";
 
+  var data = $cookies.get('error');
+
+  $scope.error = {};
+  $scope.error.title = data.title_response;
+  $scope.error.message = data.text_response;
+
+  $scope.returnPage = function() {
+    $window.location.href = $cookies.get('previousPage');
+  };
 }]);

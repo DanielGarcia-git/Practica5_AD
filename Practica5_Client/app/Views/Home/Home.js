@@ -13,11 +13,7 @@ module.controller('HomeCtrl', ['$scope', '$window', '$cookies', function($scope,
     
   var user = $cookies.getObject('user');
   console.log(user);
-  if (user != null) {
-    $scope.user = user;
-  }
-  else {
-    $window.location.href = "#!/login";
-  }
+  if (user != null) $scope.user = user;
+  else $window.location.href = "#!/login";
 
 }]);
