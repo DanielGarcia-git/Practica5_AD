@@ -1,7 +1,7 @@
 
 function buildUser(Email, Password, Name) 
 {
-    return {'email': Email, 'password': Password, 'name': Name};
+    return {'UserEmail': Email, 'UserPassword': Password, 'UserName': Name};
 }
 
 module.exports = {

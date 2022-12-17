@@ -60,7 +60,7 @@ module.controller('LoginCtrl', ['$scope', '$window', '$cookies', 'User', functio
     user.password = password;
     user.$login().then(function(response) {
       if (response.success) {
-        $cookies.put('user', response.data);
+        $cookies.putObject('user', response.data);
         $window.location.href = "#!/home";
       }
       else {

@@ -11,6 +11,6 @@ module.config(['$routeProvider', function($routeProvider) {
 
 module.controller('LogOutCtrl', ['$scope', '$window', '$cookies', function($scope, $window, $cookies) {
     
-  $cookies.put('user', null);
+  $cookies.putObject('user', null);
   $window.location.href = "#!/login";
 }]);
