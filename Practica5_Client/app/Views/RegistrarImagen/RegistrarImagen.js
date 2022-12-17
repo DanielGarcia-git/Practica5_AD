@@ -67,7 +67,7 @@ module.controller('RegistrarImagenCtrl', ['$scope', '$window', '$cookies', 'Imag
     Image.register($scope.image).$promise.then(function(response) {
       if (response.success) $window.location.href = "#!/home";
       else {
-        $cookies.puObject('error', response);
+        $cookies.putObject('error', response);
         $cookies.put('previousPage', "#!/registrarimagen");
         $window.location.href = "#!/error";
       }

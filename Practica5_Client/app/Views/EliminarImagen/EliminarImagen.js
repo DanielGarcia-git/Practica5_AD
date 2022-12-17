@@ -25,7 +25,7 @@ module.controller('EliminarImagenCtrl', ['$scope', '$window', '$cookies', 'Image
     image.$delete().then(function(response) {
       if (response.success) $window.location.href = $cookies.previousPage;
       else {
-        $cookies.puObject('error', response);
+        $cookies.putObject('error', response);
         $cookies.put('previousPage', "#!/eliminarimagen");
         $window.location.href = "#!/error";
       }

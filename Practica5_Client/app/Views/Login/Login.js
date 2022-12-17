@@ -64,7 +64,7 @@ module.controller('LoginCtrl', ['$scope', '$window', '$cookies', 'User', functio
         $window.location.href = "#!/home";
       }
       else {
-        $cookies.puObject('error', response);
+        $cookies.putObject('error', response);
         $cookies.put('previousPage', "#!/login");
         $window.location.href = "#!/error";
       }
@@ -82,7 +82,7 @@ module.controller('LoginCtrl', ['$scope', '$window', '$cookies', 'User', functio
     user.$register().then(function(response) {
       if (response.success) $window.location.href = "#!/login";
       else {
-        $cookies.puObject('error', response);
+        $cookies.putObject('error', response);
         $cookies.put('previousPage', "#!/login");
         $window.location.href = "#!/error";
       }

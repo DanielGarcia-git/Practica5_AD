@@ -9,10 +9,15 @@ router.post('/login', async function(req, res, next) {
   var loginUser = User.buildUser(req.body.username, req.body.password, null);
   try {
     await UserService.getData(loginUser, function(response) {
-      const result = ResponseJSON.buildResponseJSON(true, "Login correcto", "El usuario ha iniciado sesion correctamente", response)
-      res.json(result);
+      if (response.UserPassword === req.body.password) {
+        const result = ResponseJSON.buildResponseJSON(true, "Login correcto", "El usuario ha iniciado sesion correctamente", [response])
+        res.json(result);
+      } else {
+        const result = ResponseJSON.buildResponseJSON(false, "Login incorrecto", "El usuario o la contraseña no coinciden", []);
+        res.json(result);
+      }
     }, function(error) {
-      const result = ResponseJSON.buildResponseJSON(false, "Login incorrecto", "El usuario no existe", {});
+      const result = ResponseJSON.buildResponseJSON(false, "Login incorrecto", "El usuario no existe", []);
       res.json(result);
     });
   } catch (error) {
@@ -25,11 +30,11 @@ router.post('/register', async function(req, res, next) {
   var registerUser = User.buildUser(req.body.username, req.body.password, req.body.name);
   try {
     await UserService.isData(registerUser, function() {
-      const result = ResponseJSON.buildResponseJSON(false, "Registro incorrecto", "El usuario ya existe en la base de datos", {});
+      const result = ResponseJSON.buildResponseJSON(false, "Registro incorrecto", "El usuario ya existe en la base de datos", []);
       res.json(result);
     }, async function() {
       await UserService.setData(registerUser, function(response) {
-        const result = ResponseJSON.buildResponseJSON(true, "Registro correcto", "El usuario se ha registrado correctamente", response);
+        const result = ResponseJSON.buildResponseJSON(true, "Registro correcto", "El usuario se ha registrado correctamente", [response]);
         res.json(result);
       }, function(error) {
         const result = ResponseJSON.buildResponseJSON(false, "Registro incorrecto", "Error interno del servidor", error);

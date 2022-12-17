@@ -8,7 +8,7 @@ async function getData(user, callback, callbackError)
     if (data.length > 0) {
         const u = User.buildUser(data[0].id_user, data[0].password, data[0].name);
         callback(u);
-    } else callbackError(res)
+    } else callbackError(data)
 }
 
 async function setData(newUser, callback, callbackError)

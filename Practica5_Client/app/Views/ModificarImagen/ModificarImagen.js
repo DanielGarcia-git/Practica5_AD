@@ -33,7 +33,7 @@ module.controller('ModificarImagenCtrl', ['$scope', '$window', '$cookies', 'Imag
       image.$modify().then(function(response) {
         if (response.success) $window.location.href = $cookies.previousPage;
         else {
-          $cookies.puObject('error', response);
+          $cookies.putObject('error', response);
           $cookies.put('previousPage', "#!/modificarimagen");
           $window.location.href = "#!/error";
         }
