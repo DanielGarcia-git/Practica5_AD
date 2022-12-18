@@ -1,10 +1,11 @@
 const Multer = require('multer');
 const Util = require('util');
+const Config = require('../Config/Configuracion');
 const ImageService =  require('../services/ImageService');
 
 let storage = Multer.diskStorage({
     destination: (req, file, callback) => {
-        callback(null, '/var/webapp/Practica_5/uploads');
+        callback(null, Config.DIRECTORY_UPLOAD);
     },
     filename: async (req, file, callback) => {
         console.log(file.originalname);

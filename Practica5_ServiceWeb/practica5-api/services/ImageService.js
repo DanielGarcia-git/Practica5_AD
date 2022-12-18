@@ -80,13 +80,26 @@ async function updateData(updateImage, callback, callbackError)
                  updateImage.Keywords, 
                  updateImage.Author, 
                  updateImage.Creator, 
-                 updateImage.CreationDate, 
                  updateImage.RegisterDate, 
-                 updateImage.FileName,
                  updateImage.IdImage];
-  const result = await db.query("UPDATE images SET title = ?, description = ?, keywords = ?, author = ?, creator = ?, capture_date = ?, storage_date = ?, filename = ? WHERE id = ?", param);
-  if (result.affectedRows) callback(updateImage);
-  else callbackError();
+  const result = await db.query("UPDATE images SET title = ?, description = ?, keywords = ?, author = ?, creator = ?, storage_date = ? WHERE id = ?", param);
+  if (result.affectedRows) {
+    const data = await db.query("SELECT * FROM images WHERE id=?", [updateImage.IdImage]);
+    if (data.length > 0) {
+      const image = Image.buildImage(data[0].id, 
+                                     data[0].title, 
+                                     data[0].description, 
+                                     data[0].keywords, 
+                                     data[0].author, 
+                                     data[0].creator, 
+                                     data[0].capture_date, 
+                                     data[0].storage_date, 
+                                     data[0].filename);
+      callback(image);
+    }
+    else callback(data);
+  }
+  else callbackError(result);
 }
 
 async function deleteData(image, callback, callbackError) 
