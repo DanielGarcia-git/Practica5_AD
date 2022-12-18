@@ -150,6 +150,7 @@ router.get('/searchTitle', async function(req, res, next) {
 });
 
 router.get('/searchCreationDate', async function(req, res, next) {
+  console.log(req.query);
   var searchImage = Image.buildImage('', '', '', '', '', '', req.query.creationdate, '', '');
   try {
     await ImageService.getDataAdvance(searchImage, function(response) {
@@ -165,7 +166,7 @@ router.get('/searchCreationDate', async function(req, res, next) {
   }
 });
 
-router.get('/searchAutor', async function(req, res, next) {
+router.get('/searchAuthor', async function(req, res, next) {
   var searchImage = Image.buildImage('', '', '', '', req.query.author, '', '', '', '');
   try {
     await ImageService.getDataAdvance(searchImage, function(response) {

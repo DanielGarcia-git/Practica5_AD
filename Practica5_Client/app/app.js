@@ -9,7 +9,8 @@ var myApp = angular.module('practica5Client', [
   'practica5Client.home',
   'practica5Client.registrarImagen',
   'practica5Client.listarImagenes',
-  'practica5Client.buscarImagen',
+  'practica5Client.buscarImagenFilter',
+  'practica5Client.buscarImagenDataBase',
   'practica5Client.error',
   'practica5Client.modificarImagen',
   'practica5Client.eliminarImagen'

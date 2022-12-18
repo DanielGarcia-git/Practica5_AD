@@ -8,7 +8,8 @@ Practica5_Client-> Aplicacion cliente
             Rest_URL.js-> Los URLs de la REST API que utiliza la aplicacion
         lib-> Las librerias de la aplicacion
         Views-> Contiene todas las vistas de la aplicacion
-            BuscarImagen-> Vista y controlador para buscar una imagen
+            BuscarImagen_DataBase-> Vista y controlador para buscar una imagen utilizando poeraciones REST API
+            BuscarImagen_Filter-> Vista y controlador para buscar una imagen utilizando los filters de Angular
             EliminarImagen-> Vista y controlador para eliminar una imagen
             Error-> Vista y controlador para errores
             Home-> Vista y controlador para la vista principal

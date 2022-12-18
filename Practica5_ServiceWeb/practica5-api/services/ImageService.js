@@ -56,27 +56,30 @@ async function getDataAdvance(image, callback, callbackError)
     sql = sql + 'keywords = ?';
     params.push(image.Keywords);
   }
-  if (image.RegisterDate != '') {
-    sql = sql + 'storage_date = ?';
-    params.push(image.RegisterDate);
+  if (image.CreationDate != '') {
+    sql = sql + 'capture_date = ?';
+    params.push(image.CreationDate);
   }
-  const data = await db.query(sql, params);
-  if (data.length > 0) {
-    var images = [];
-    for(key in data) {
-      const ima = Image.buildImage(data[key].id, 
-                                   data[key].title, 
-                                   data[key].description, 
-                                   data[key].keywords, 
-                                   data[key].author, 
-                                   data[key].creator, 
-                                   data[key].capture_date, 
-                                   data[key].storage_date, 
-                                   data[key].filename);
-      images.push(ima);
-    }
-    callback(images);
-  } else callbackError(data);
+  console.log(sql);
+  if (params.length > 0) {
+    const data = await db.query(sql, params);
+    if (data.length > 0) {
+      var images = [];
+      for(key in data) {
+        const ima = Image.buildImage(data[key].id, 
+                                    data[key].title, 
+                                    data[key].description, 
+                                    data[key].keywords, 
+                                    data[key].author, 
+                                    data[key].creator, 
+                                    data[key].capture_date, 
+                                    data[key].storage_date, 
+                                    data[key].filename);
+        images.push(ima);
+      }
+      callback(images);
+    } else callbackError(data);
+  } else callbackError();
 }
 
 async function getNextId(callback, callbackError) 

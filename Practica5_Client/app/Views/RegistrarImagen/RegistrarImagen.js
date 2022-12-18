@@ -50,6 +50,27 @@ module.factory('Image', ['$resource', function($resource) {
         }
         return str.join("&");
       }
+    },
+    searchByTitle: {
+      method: 'GET',
+      url: REST_URL.SEARCH_BY_TITLE,
+      params: {title: '@title'}
+    },
+    searchByCreationDate: {
+      method: 'GET',
+      url: REST_URL.SEARCH_BY_CREATION_DATE,
+      params: {creationdate: '@creationdate'}
+
+    },
+    searchByAuthor: {
+      method: 'GET',
+      url: REST_URL.SEARCH_BY_AUTHOR,
+      params: {author: '@author'}
+    },
+    searchByKeywords: {
+      method: 'GET',
+      url: REST_URL.SEARCH_BY_KEYWORDS,
+      params: {keywords: '@keywords'}
     }
   });
 }]);

@@ -1,16 +1,15 @@
 'use strict';
 
-var module = angular.module('practica5Client.buscarImagen', ['ngRoute', 'ngCookies']);
+var module = angular.module('practica5Client.buscarImagenFilter', ['ngRoute', 'ngCookies']);
 
 module.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/buscarimagen', {
-    templateUrl: 'Views/BuscarImagen/BuscarImagen.html',
-    controller: 'BuscarImagenCtrl'
+  $routeProvider.when('/buscarimagenfilter', {
+    templateUrl: 'Views/BuscarImagen_Filter/BuscarImagen_Filter.html',
+    controller: 'BuscarImagenFilterCtrl'
   });
 }]);
 
-module.controller('BuscarImagenCtrl', ['$scope', '$window', '$cookies', 'Image', function($scope, $window, $cookies, Image) {
-  
+module.controller('BuscarImagenFilterCtrl', ['$scope', '$window', '$cookies', 'Image', function($scope, $window, $cookies, Image) {
   var user = $cookies.getObject('user');
   if (user != null) $scope.user = user;
   else $window.location.href = "#!/login";
@@ -25,13 +24,13 @@ module.controller('BuscarImagenCtrl', ['$scope', '$window', '$cookies', 'Image',
 
   $scope.modImage = function(image) {
     $cookies.actualImage = image;
-    $cookies.previousPage = "#!/buscarimagen";
+    $cookies.previousPage = "#!/buscarimagenfilter";
     $window.location.href = "#!/modificarimagen";
   };
 
   $scope.delImage = function(image) {
     $cookies.actualImage = image;
-    $cookies.previousPage = "#!/buscarimagen";
+    $cookies.previousPage = "#!/buscarimagenfilter";
     $window.location.href = "#!/eliminarimagen";
   };
 
