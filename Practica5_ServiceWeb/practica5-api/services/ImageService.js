@@ -1,5 +1,6 @@
 const db = require('./db');
 const Image = require('../Models/Image');
+const { param } = require('../routes/images');
 
 async function getData(image, callback, callbackError) 
 {
@@ -37,6 +38,45 @@ async function getAllData(callback, callbackError)
     }
     callback(images);
   } else callback([]);
+}
+
+async function getDataAdvance(image, callback, callbackError) 
+{
+  var sql = "SELECT * FROM images WHERE ";
+  var params = [];
+  if (image.Title != '') {
+    sql = sql + 'title = ?';
+    params.push(image.Title);
+  }
+  if (image.Author != '') {
+    sql = sql + 'author = ?';
+    params.push(image.Author);
+  }
+  if (image.Keywords != '') {
+    sql = sql + 'keywords = ?';
+    params.push(image.Keywords);
+  }
+  if (image.RegisterDate != '') {
+    sql = sql + 'storage_date = ?';
+    params.push(image.RegisterDate);
+  }
+  const data = await db.query(sql, params);
+  if (data.length > 0) {
+    var images = [];
+    for(key in data) {
+      const ima = Image.buildImage(data[key].id, 
+                                   data[key].title, 
+                                   data[key].description, 
+                                   data[key].keywords, 
+                                   data[key].author, 
+                                   data[key].creator, 
+                                   data[key].capture_date, 
+                                   data[key].storage_date, 
+                                   data[key].filename);
+      images.push(ima);
+    }
+    callback(images);
+  } else callbackError(data);
 }
 
 async function getNextId(callback, callbackError) 
@@ -127,5 +167,6 @@ module.exports = {
   setData,
   updateData,
   deleteData,
-  getNextId
+  getNextId,
+  getDataAdvance
 };

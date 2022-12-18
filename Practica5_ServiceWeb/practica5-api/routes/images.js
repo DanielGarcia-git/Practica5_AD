@@ -117,24 +117,84 @@ router.get('/list', async function(req, res, next) {
   }
 });
 
-router.get('/searchID', function(req, res, next) {
-
+router.get('/searchID', async function(req, res, next) {
+  var searchImage = Image.buildImage(req.query.id, '', '', '', '', '', '', '', '');
+  try {
+    await ImageService.getData(searchImage, function(response) {
+      const result = ResponseJSON.buildResponseJSON(true, "Imagen por ID encontrada", "Se ha encontrado la imagen con un ID especifico", response);
+      res.json(result);
+    }, function(error) {
+      const result = ResponseJSON.buildResponseJSON(false, "Imagen por ID no encontrada", "La imagen no existe en el sistema", error);
+      res.json(result);
+    });
+  } catch(error) {
+    console.error('Error durante la busqueda por id: ', error.message);
+    next(error);
+  }
 });
 
-router.get('/searchTitle', function(req, res, next) {
-
+router.get('/searchTitle', async function(req, res, next) {
+  var searchImage = Image.buildImage('', req.query.title, '', '', '', '', '', '', '');
+  try {
+    await ImageService.getDataAdvance(searchImage, function(response) {
+      const result = ResponseJSON.buildResponseJSON(true, "Imagen por titulo encontrada", "Se ha encontrado la imagen con un titulo especifico", response);
+      res.json(result);
+    }, function(error) {
+      const result = ResponseJSON.buildResponseJSON(false, "Imagen por titulo no encontrada", "Titulo no valido o no existe", error);
+      res.json(result);
+    });
+  } catch (error) {
+    console.error('Error durante la busqueda por titulo: ', error.message);
+    next(error);
+  }
 });
 
-router.get('/searchCreationDate', function(req, res, next) {
-
+router.get('/searchCreationDate', async function(req, res, next) {
+  var searchImage = Image.buildImage('', '', '', '', '', '', req.query.creationdate, '', '');
+  try {
+    await ImageService.getDataAdvance(searchImage, function(response) {
+      const result = ResponseJSON.buildResponseJSON(true, "Imagen por fecha de creacion encontrada", "Se ha encontrado la imagen con una fecha de creacion especifica", response);
+      res.json(result);
+    }, function(error) {
+      const result = ResponseJSON.buildResponseJSON(false, "Imagen por fecha de creacion no encontrada", "La fecha de creacion no es valida o no existe", error);
+      res.json(result);
+    });
+  } catch (error) {
+    console.error('Error durante la busqueda por fecha de creacion: ', error.message);
+    next(error);
+  }
 });
 
-router.get('/searchAutor', function(req, res, next) {
-
+router.get('/searchAutor', async function(req, res, next) {
+  var searchImage = Image.buildImage('', '', '', '', req.query.author, '', '', '', '');
+  try {
+    await ImageService.getDataAdvance(searchImage, function(response) {
+      const result = ResponseJSON.buildResponseJSON(true, "Imagen por autor encontrada", "Se ha encontrado la imagen con un autor especifico", response);
+      res.json(result);
+    }, function(error) {
+      const result = ResponseJSON.buildResponseJSON(false, "Imagen por autor no encontrada", "Autor no valido o no existe", error);
+      res.json(result);
+    });
+  } catch (error) {
+    console.error('Error durante la busqueda por autor: ', error.message);
+    next(error);
+  }
 });
 
-router.get('/searchKeywords', function(req, res, next) {
-
+router.get('/searchKeywords', async function(req, res, next) {
+  var searchImage = Image.buildImage('', '', '', req.query.keywords, '', '', '', '', '');
+  try {
+    await ImageService.getDataAdvance(searchImage, function(response) {
+      const result = ResponseJSON.buildResponseJSON(true, "Imagen por keyword encontrada", "Se ha encontrado la imagen con un keyword especifico", response);
+      res.json(result);
+    }, function(error) {
+      const result = ResponseJSON.buildResponseJSON(false, "Imagen por keyword no encontrada", "keyword no valido o no existe", error);
+      res.json(result);
+    });
+  } catch (error) {
+    console.error('Error durante la busqueda por Keywords: ', error.message);
+    next(error);
+  }
 });
     
 module.exports = router;
