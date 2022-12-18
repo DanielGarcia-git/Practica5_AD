@@ -23,17 +23,17 @@ async function getAllData(callback, callbackError)
   const data = await db.query("SELECT * FROM images");
   if (data.length > 0) {
     var images = [];
-    for(image in data) {
-      const ima = Image.buildImage(data[0].id, 
-                                   data[0].title, 
-                                   data[0].description, 
-                                   data[0].keywords, 
-                                   data[0].author, 
-                                   data[0].creator, 
-                                   data[0].capture_date, 
-                                   data[0].storage_date, 
-                                   data[0].filename);
-      images.push(image);
+    for(key in data) {
+      const ima = Image.buildImage(data[key].id, 
+                                   data[key].title, 
+                                   data[key].description, 
+                                   data[key].keywords, 
+                                   data[key].author, 
+                                   data[key].creator, 
+                                   data[key].capture_date, 
+                                   data[key].storage_date, 
+                                   data[key].filename);
+      images.push(ima);
     }
     callback(images);
   } else callback([]);

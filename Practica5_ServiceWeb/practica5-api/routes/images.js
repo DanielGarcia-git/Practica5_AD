@@ -40,7 +40,20 @@ router.post('/modify', async function(req, res, next) {
 });
 
 router.post('/delete', async function(req, res, next) {
-
+  console.log(req.body);
+  var delImage = Image.buildImage(req.body.id, '', '', '', '', '', '', '', '');
+  try {
+    await ImageService.deleteData(delImage, function(response) {
+      const result = ResponseJSON.buildResponseJSON(true, "Imagen eliminada correctamente", "La imagen se ha eliminado del sistema", response);
+      res.json(result);
+    }, function(error) {
+      const result = ResponseJSON.buildResponseJSON(false, "Imagen no eliminada correctamente", "La imagen no existe", error);
+      res.json(result);
+    });
+  } catch (error) {
+    console.error('Error durante la eliminacion de la imagen: ', error.message);
+    next(error);
+  }
 });
 
 router.get('/download', async function(req, res, next) {
