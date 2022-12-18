@@ -1,6 +1,5 @@
 const User = require('../Models/User');
 const ResponseJSON = require('../Models/ResponseJSON');
-const Config = require('../Config/Configuracion');
 const UserService = require('../services/UserService');
 var express = require('express');
 var router = express.Router();
@@ -21,7 +20,7 @@ router.post('/login', async function(req, res, next) {
       res.json(result);
     });
   } catch (error) {
-    console.error('Error durante el login', error.message);
+    console.error('Error durante el login: ', error.message);
     next(error);
   }
 });
@@ -42,7 +41,7 @@ router.post('/register', async function(req, res, next) {
       });
     })
   } catch (error) {
-    console.error('Error durante el registro', error.message);
+    console.error('Error durante el registro: ', error.message);
     next(error);
   }
 });

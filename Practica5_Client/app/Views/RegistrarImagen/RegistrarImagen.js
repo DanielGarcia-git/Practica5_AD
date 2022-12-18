@@ -19,7 +19,7 @@ module.factory('Image', ['$resource', function($resource) {
         var formData = new FormData();
         for (var key in data) {
           if (data[key] instanceof Date) formData.append(key, data[key].toLocaleDateString());
-          formData.append(key, data[key]);
+          else formData.append(key, data[key]);
         }
         return formData;
       }
