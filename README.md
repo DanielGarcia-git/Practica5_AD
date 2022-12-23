@@ -1,6 +1,8 @@
 Descripción del contenido de los directorios:
 
--MySQL-> Contiene scripts para crear la base de datos
+MySQL-> Contiene scripts para crear la base de datos
+
+build.bat-> Se trata de un script que lanza los servidores automaticamente
 
 Practica5_Client-> Aplicacion cliente
     app-> Directorio raiz de la aplicacion

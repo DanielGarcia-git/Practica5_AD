@@ -8,9 +8,7 @@ let storage = Multer.diskStorage({
         callback(null, Config.DIRECTORY_UPLOAD);
     },
     filename: async (req, file, callback) => {
-        console.log(file.originalname);
         await ImageService.getNextId(function(id) {
-            console.log(id);
             callback(null, id.toString() + '.' + file.originalname.split('.').pop());
         });
     }
